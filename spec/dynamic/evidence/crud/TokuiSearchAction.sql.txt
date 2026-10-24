@@ -1,0 +1,1 @@
+SELECT tk_cd, tk_nm, tel, sime_kbn, hasu_kbn, kaisyu_m, kaisyu_d, gendo, a4, del_flg FROM m_tokui WHERE 1 = 1 AND tk_cd LIKE '1%' ORDER BY tk_cd

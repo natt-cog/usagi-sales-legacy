@@ -1,0 +1,1 @@
+SELECT sh_cd, sh_nm, tanka FROM m_shohin ORDER BY sh_cd

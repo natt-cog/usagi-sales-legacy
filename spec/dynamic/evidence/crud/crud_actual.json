@@ -1,0 +1,70 @@
+{
+ "LoginAction": {
+  "m_user": "R"
+ },
+ "TokuiSearchAction": {
+  "m_tokui": "R"
+ },
+ "TokuiEditAction": {
+  "m_tokui": "RU"
+ },
+ "JuchuInputAction": {
+  "m_shohin": "R"
+ },
+ "JuchuConfirmAction": {
+  "m_tokui": "R",
+  "m_shohin": "R"
+ },
+ "JuchuRegistAction": {
+  "t_juchu": "CR"
+ },
+ "JuchuInquiryAction": {
+  "t_juchu": "R",
+  "m_tokui": "R",
+  "m_shohin": "R"
+ },
+ "SeikyuInquiryAction": {
+  "t_seikyu": "R"
+ },
+ "END": {},
+ "JuchuExtract": {
+  "m_tokui": "R",
+  "m_shohin": "R",
+  "t_juchu": "RU"
+ },
+ "SeikyuImport": {
+  "t_seikyu": "CD"
+ },
+ "USB100": {
+  "SHOHIN": "R",
+  "JUCHSRT": "R",
+  "TOKUI": "R",
+  "URIAGE": "C"
+ },
+ "USB200": {
+  "TOKUI": "R",
+  "URIAGE": "R",
+  "SEIKYU": "C"
+ },
+ "USB300": {
+  "NYUKSRT": "R",
+  "SEIKYU": "R",
+  "SKKEKKA": "C",
+  "KESIKOMI": "C"
+ },
+ "USB400": {
+  "URIAGE": "R",
+  "TKSUM": "C"
+ },
+ "USR500": {
+  "SKKEKKA": "R",
+  "URIAGE": "R",
+  "TOKUI": "R",
+  "SEIKYUSH.txt": "C"
+ },
+ "USR510": {
+  "TKSUM": "R",
+  "TOKUI": "R",
+  "URIGETU.txt": "C"
+ }
+}

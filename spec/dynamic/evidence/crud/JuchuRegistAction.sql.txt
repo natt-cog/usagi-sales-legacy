@@ -1,0 +1,2 @@
+SELECT MAX(juchu_no) FROM t_juchu
+INSERT INTO t_juchu (juchu_no, juchu_ymd, tk_cd, sh_cd, suryo, tanka, juchu_kbn, uriage_kin, nebiki_ritu, biko, flg1, wk_x1, ins_ymd, ins_user) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,'0',' ',$11,$12)

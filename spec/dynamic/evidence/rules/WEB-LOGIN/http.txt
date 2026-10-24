@@ -1,0 +1,25 @@
+POST http://localhost:8080/usagi/login.do
+BODY: userId=user01&password=usagi01
+HTTP 302
+画面テキスト: 
+Location: /usagi/menu.do;jsessionid=3BF9509308B0AA6A5E4B4F7179AC46BF
+------------------------------------------------------------
+POST http://localhost:8080/usagi/login.do
+BODY: userId=user01&password=usagi01+
+HTTP 200
+画面テキスト: ログイン 株式会社うさぎ商事 販売管理システム ログイン ユーザIDまたはパスワードが違います ユーザID パスワード
+------------------------------------------------------------
+POST http://localhost:8080/usagi/login.do
+BODY: userId=user01&password=USAGI01
+HTTP 200
+画面テキスト: ログイン 株式会社うさぎ商事 販売管理システム ログイン ユーザIDまたはパスワードが違います ユーザID パスワード
+------------------------------------------------------------
+POST http://localhost:8080/usagi/login.do
+BODY: userId=user01&password=
+HTTP 200
+画面テキスト: ログイン 株式会社うさぎ商事 販売管理システム ログイン ユーザIDまたはパスワードが違います ユーザID パスワード
+------------------------------------------------------------
+GET http://localhost:8080/usagi/login.do
+HTTP 200
+画面テキスト: ログイン 株式会社うさぎ商事 販売管理システム ログイン ユーザID パスワード
+------------------------------------------------------------

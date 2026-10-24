@@ -1,0 +1,31 @@
+== cobc -m USB110
+RC=0
+== cobc -m USB210
+RC=0
+== cobc -x USB100 (copy=batch/copy のみ)
+RC=0
+== cobc -x USB200 (copy=batch/copy のみ)
+RC=0
+== cobc -x USB300 (copy=batch/copy のみ)
+batch/cobol/USB300.cbl:29: error: NYKREC: No such file or directory
+batch/cobol/USB300.cbl:30: error: RECORD description missing or invalid
+batch/cobol/USB300.cbl:18: error: missing file description for FILE NYFL
+batch/cobol/USB300.cbl: in paragraph 'KESIKOMI-RTN':
+batch/cobol/USB300.cbl:111: error: 'NY-KIN' is not defined
+batch/cobol/USB300.cbl:111: error: 'NY-TESURYO' is not defined
+batch/cobol/USB300.cbl:117: error: 'NY-DATE' is not defined
+batch/cobol/USB300.cbl:117: error: invalid expression
+batch/cobol/USB300.cbl: in paragraph 'KS-OUT-RTN':
+batch/cobol/USB300.cbl:149: error: 'NY-NO' is not defined
+batch/cobol/USB300.cbl:151: error: 'NY-TK-CD' is not defined
+RC=1
+== cobc -x USB400 (copy=batch/copy のみ)
+RC=0
+== cobc -x USR500 (copy=batch/copy のみ)
+RC=0
+== cobc -x USR510 (copy=batch/copy のみ)
+RC=0
+== cobc -x USB900 (copy=batch/copy のみ)
+RC=0
+== cobc -x USB300 (copy=batch/copy + evidence/restore NYKREC 復元案)
+RC=0

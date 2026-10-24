@@ -1,0 +1,9 @@
+SK_bad.DAT RC=1
+Exception in thread "main" java.lang.NumberFormatException: For input string: "0000000ABCD"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at jp.co.usagi.batch.SeikyuImport.sls(SeikyuImport.java:56)
+	at jp.co.usagi.batch.SeikyuImport.main(SeikyuImport.java:33)
+
+取込後件数=10

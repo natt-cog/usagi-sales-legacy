@@ -1,0 +1,10 @@
+POST http://localhost:8080/usagi/juchuConfirm.do
+BODY: juchuYmd=20241201&tkCd=Z00001&shCd=Z00001&suryo=1&juchuKbn=1&biko=
+HTTP 200
+画面テキスト: 受注入力（確認） 株式会社うさぎ商事 販売管理システム 営業事務１ さん メニュー ログアウト 受注入力（確認） 以下の内容で登録します。 受注日 20241201 得意先 Z00001 検証用得意先（更新） 商品 Z00001 検証用商品333円 数量 1 単価 333 受注区分 通常 金額（税抜） 333 備考
+------------------------------------------------------------
+POST http://localhost:8080/usagi/juchuRegist.do
+BODY: juchuYmd=20241201&tkCd=Z00001&shCd=Z00001&suryo=1&juchuKbn=1&biko=あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ&tanka=333&nebikiRitu=0.0&uriageKin=333
+HTTP 500
+画面テキスト: HTTP Status 500 – Internal Server Error HTTP Status 500 – Internal Server Error Type Exception Report Message org.postgresql.util.PSQLException: ERROR: value too long for type character varying(60) Description The server encountered an unexpected condition that prevented it from fulfilling the request. Exception javax.servlet.ServletException: org.postgresql.util.PSQLException: ERROR: value too long for type character varying(60) org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:286) org.apache.struts.action.ActionServlet.process(ActionServlet.java:1913) org.apache.struts.action.ActionServlet.doPost(ActionServlet.java:462) javax.servlet.http.HttpServlet.service(HttpServlet.java:515) javax.servlet.http.HttpServlet.service(HttpServlet.java:583) org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) jp.co.usagi.sales.common.EncodingFilter.doFilter(EncodingFilter.java:23) Root Cause org.postgresql.util.PSQLException: ERROR: value too long for type character varying(60) org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2565) org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2297) org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:322) org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:481) org.postgresql.jdbc.PgStatement.execute(PgStatement.java:401) org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.j
+------------------------------------------------------------

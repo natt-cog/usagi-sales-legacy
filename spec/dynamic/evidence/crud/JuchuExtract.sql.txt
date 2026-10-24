@@ -1,0 +1,4 @@
+SELECT tk_cd, tk_nm, sime_kbn, hasu_kbn, kaisyu_m, kaisyu_d, del_flg FROM m_tokui ORDER BY tk_cd
+SELECT sh_cd, sh_nm, zei_kbn, tanka FROM m_shohin ORDER BY sh_cd
+SELECT juchu_no, juchu_ymd, tk_cd, sh_cd, suryo, tanka, juchu_kbn, uriage_kin FROM t_juchu ORDER BY juchu_no
+UPDATE t_juchu SET flg1 = '1' WHERE flg1 = '0'
