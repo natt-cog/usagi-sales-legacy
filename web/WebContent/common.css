@@ -1,0 +1,10 @@
+body { font-family: "MS UI Gothic", sans-serif; font-size: 12px; background: #f0f0e8; margin: 0; }
+.head { background: #336699; color: #fff; padding: 4px 8px; }
+.head a { color: #fff; }
+.main { padding: 8px 16px; }
+h2 { font-size: 15px; border-left: 6px solid #336699; padding-left: 6px; }
+table.list { border-collapse: collapse; background: #fff; }
+table.list th { background: #ccddee; border: 1px solid #888; padding: 2px 6px; }
+table.list td { border: 1px solid #888; padding: 2px 6px; }
+td.num { text-align: right; }
+.msg { color: #cc0000; font-weight: bold; }

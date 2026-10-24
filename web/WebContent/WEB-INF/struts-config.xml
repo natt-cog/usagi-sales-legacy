@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+    "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+    <form-beans>
+        <form-bean name="loginForm" type="jp.co.usagi.sales.form.LoginForm"/>
+        <form-bean name="juchuForm" type="jp.co.usagi.sales.form.JuchuForm"/>
+    </form-beans>
+    <global-forwards>
+        <forward name="login" path="/login.jsp"/>
+    </global-forwards>
+    <action-mappings>
+        <action path="/login" type="jp.co.usagi.sales.action.LoginAction"
+                name="loginForm" scope="request" validate="false">
+            <forward name="input" path="/login.jsp"/>
+            <forward name="success" path="/menu.do" redirect="true"/>
+        </action>
+        <action path="/logout" type="jp.co.usagi.sales.action.LogoutAction">
+            <forward name="success" path="/login.jsp"/>
+        </action>
+        <action path="/menu" type="jp.co.usagi.sales.action.MenuAction">
+            <forward name="success" path="/menu.jsp"/>
+        </action>
+        <action path="/tokuiSearch" type="jp.co.usagi.sales.action.TokuiSearchAction">
+            <forward name="success" path="/tokui_search.jsp"/>
+        </action>
+        <action path="/tokuiEdit" type="jp.co.usagi.sales.action.TokuiEditAction">
+            <forward name="success" path="/tokui_edit.jsp"/>
+        </action>
+        <action path="/juchuInput" type="jp.co.usagi.sales.action.JuchuInputAction"
+                name="juchuForm" scope="request" validate="false">
+            <forward name="success" path="/juchu_input.jsp"/>
+        </action>
+        <action path="/juchuConfirm" type="jp.co.usagi.sales.action.JuchuConfirmAction"
+                name="juchuForm" scope="request" validate="false">
+            <forward name="input" path="/juchuInput.do"/>
+            <forward name="success" path="/juchu_confirm.jsp"/>
+        </action>
+        <action path="/juchuRegist" type="jp.co.usagi.sales.action.JuchuRegistAction"
+                name="juchuForm" scope="request" validate="false">
+            <forward name="success" path="/juchu_complete.jsp"/>
+        </action>
+        <action path="/juchuInquiry" type="jp.co.usagi.sales.action.JuchuInquiryAction">
+            <forward name="success" path="/juchu_inquiry.jsp"/>
+        </action>
+        <action path="/seikyuInquiry" type="jp.co.usagi.sales.action.SeikyuInquiryAction">
+            <forward name="success" path="/seikyu_inquiry.jsp"/>
+        </action>
+    </action-mappings>
+    <message-resources parameter="MessageResources" null="true"/>
+</struts-config>
