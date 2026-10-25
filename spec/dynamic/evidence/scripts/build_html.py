@@ -20,12 +20,27 @@ def badge(v, why='', ev=''):
     return s
 
 
+def b64(rel):
+    import base64
+    return base64.b64encode(open(J(DYN, rel), 'rb').read()).decode()
+
+
+IMGS = {}
+VID_DONE = []
+
+
 def shots(names):
-    return '<div class="shots">' + ''.join(f'<figure><a href="evidence/screens/{n}" target="_blank"><img loading="lazy" src="evidence/screens/{n}"></a><figcaption>{n}</figcaption></figure>' for n in names) + '</div>'
+    for n in names:
+        IMGS.setdefault(n, 'data:image/png;base64,' + b64('evidence/screens/' + n))
+    return '<div class="shots">' + ''.join(f'<figure><img class="shot" data-k="{n}" alt="{n}" title="クリックで拡大"><figcaption>{n}（<a href="evidence/screens/{n}" target="_blank">ファイル</a>）</figcaption></figure>' for n in names) + '</div>'
 
 
 def video():
-    return f'<figure class="vid"><video controls preload="metadata" src="{VIDEO}"></video><figcaption>操作動画：受注入力→確認→登録→受注照会→夜間バッチ（JCL 相当を実行）→請求照会（<a href="{VIDEO}">mp4</a>、ジョブログ <a href="evidence/batch/run_e2e.log">run_e2e.log</a>）</figcaption></figure>'
+    cap = f'<figcaption>操作動画：受注入力→確認→登録→受注照会→夜間バッチ（JCL 相当を実行）→請求照会（<a href="{VIDEO}">mp4 ファイル</a>、ジョブログ <a href="evidence/batch/run_e2e.log">run_e2e.log</a>）</figcaption>'
+    if VID_DONE:
+        return f'<p>▶ <a href="#e2e">操作動画（03 の先頭）</a>でこの画面の操作を見られます</p>'
+    VID_DONE.append(1)
+    return f'<figure class="vid"><video id="e2e" controls preload="metadata" src="data:video/mp4;base64,{b64(VIDEO)}"></video>{cap}</figure>'
 
 
 def judge_md(text, ctx):
@@ -131,8 +146,8 @@ for no, title, p in docs:
     if no == '01':
         content = program_spec()
     else:
-        content = render_md(p, did)
-        if no == '03': content = video() + content
+        top = video() if no == '03' else ''
+        content = top + render_md(p, did)
         if no == '06':
             content += '<h3>実測した CRUD（SQL ログ・strace）</h3><table><tr><th>プログラム</th><th>判定</th><th>実測</th></tr>' + ''.join(
                 f'<tr><td>{esc(k)}</td><td>{badge(x["verdict"])}</td><td>{esc(x["why"])} <a class=ev href="{x["ev"]}">エビデンス</a></td></tr>' for k, x in V['crud'].items()) + '</table>'
@@ -176,11 +191,11 @@ h2{border-left:6px solid #1f3b57;padding-left:8px;margin-top:40px}table{border-c
 th{background:#ddebf7}.b{display:inline-block;padding:1px 6px;border-radius:3px;font-size:12px;white-space:nowrap}.ex{background:#c6efce}.src{background:#ddebf7}.est{background:#ffeb9c}.nv{background:#f4cccc}
 .why{color:#555;font-size:12px}.ev{font-size:12px}tr.fixed td{background:#fff2cc}.fix{background:#fff2cc;border:1px solid #e0b000;padding:6px;margin:6px 0}
 .shots{display:flex;flex-wrap:wrap;gap:10px}.shots img{width:420px;border:1px solid #999}figure{margin:4px}figcaption{font-size:12px;color:#555}
-video{width:900px;max-width:100%;border:1px solid #999}.static{font-size:12px;color:#666}details summary{cursor:pointer;font-weight:bold;margin:6px 0}.sum{width:auto}.evl{columns:2;font-size:12px}'''
+video{width:900px;max-width:100%;border:1px solid #999}.static{font-size:12px;color:#666}details summary{cursor:pointer;font-weight:bold;margin:6px 0}.sum{width:auto}.evl{columns:2;font-size:12px}.shot{cursor:zoom-in}#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9;align-items:center;justify-content:center;cursor:zoom-out}#lb img{max-width:95%;max-height:95%;background:#fff}'''
 toc_html = '<nav><b>動的仕様書</b><ul><li><a href="#summary">結果の要約</a></li>' + ''.join(toc) + '<li><a href="#rules">業務ルール検証結果</a></li><li><a href="#fixes">修正箇所一覧</a></li><li><a href="#issues">要確認の挙動</a></li><li><a href="#evidence">エビデンス一覧</a></li></ul><p style="font-size:12px">Excel 版：<a href="設計書.xlsx">設計書.xlsx</a><br>静的版：<a href="../設計書.xlsx">spec/設計書.xlsx</a></p></nav>'
 page = f'''<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><title>販売管理システム 動的仕様書</title><style>{CSS}</style>
 <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";mermaid.initialize({{startOnLoad:true}});</script></head>
 <body>{toc_html}<main><h1>販売管理システム（usagi-sales-legacy）動的仕様書</h1><p>静的仕様書（spec/md・spec/設計書.xlsx）の記述を、システムを実際に動かして確かめた結果。静的版は変更していない。</p>
-{summary}{"".join(body)}{rules_html}{fix_html}{iss_html}{ev_html}</main></body></html>'''
+{summary}{"".join(body)}{rules_html}{fix_html}{iss_html}{ev_html}</main><div id="lb" onclick="this.style.display='none'"><img></div><script>const IMG={json.dumps(IMGS)};document.querySelectorAll('img.shot').forEach(i=>{{i.src=IMG[i.dataset.k];i.onclick=()=>{{const l=document.getElementById('lb');l.querySelector('img').src=i.src;l.style.display='flex';}};}});</script></body></html>'''
 open(J(DYN, 'index.html'), 'w').write(page)
 print(cnt, tot, {k: f'{v / tot:.1%}' for k, v in cnt.items()}, 'md', mdcnt)
