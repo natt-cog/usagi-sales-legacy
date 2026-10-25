@@ -25,7 +25,7 @@ async function openEv(p){
 }
 document.addEventListener('click',e=>{const a=e.target.closest('a[href]');if(!a)return;const h=a.getAttribute('href').split('#')[0];if(!h)return;
   if(/^evidence\/screens\/.+\.png$/.test(h)){const k=h.split('/').pop();if(IMG[k]){e.preventDefault();const l=document.getElementById('lb');l.querySelector('img').src=IMG[k];l.style.display='flex';return;}}
-  if(/^evidence\/video\/.+\.mp4$/.test(h)){e.preventDefault();document.getElementById('e2e').scrollIntoView({block:'center'});return;}
+  if(/^evidence\/video\/.+\.mp4$/.test(h)){e.preventDefault();(document.querySelector('video[data-f="'+h+'"]')||document.getElementById('e2e')).scrollIntoView({block:'center'});return;}
   if(/^(evidence\/|\.\.\/|設計書)/.test(h)){e.preventDefault();openEv(h);}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('evm').style.display='none';});
 </script>
