@@ -27,6 +27,16 @@ def b64(rel):
 
 IMGS = {}
 VID_DONE = []
+CLIPS = json.load(open(J(DYN, 'evidence', 'video', 'clips.json')))
+VIDS = {VIDEO}
+
+
+def clip(key, label='操作動画'):
+    k = next(n for n in CLIPS if n.split('_')[0] == key)
+    c = CLIPS[k]; VIDS.add(c['file'])
+    return (f'<figure class="vid clip"><video id="v-{key}" data-f="{esc(c["file"])}" controls preload="metadata" '
+            f'src="data:video/mp4;base64,{b64(c["file"])}"></video><figcaption>{label}（{c["sec"]:.0f}秒）：{esc(c["title"])}'
+            f'（<a href="{esc(c["file"])}">mp4 ファイル</a>）</figcaption></figure>')
 
 
 def shots(names):
@@ -40,7 +50,7 @@ def video():
     if VID_DONE:
         return f'<p>▶ <a href="#e2e">操作動画（03 の先頭）</a>でこの画面の操作を見られます</p>'
     VID_DONE.append(1)
-    return f'<figure class="vid"><video id="e2e" controls preload="metadata" src="data:video/mp4;base64,{b64(VIDEO)}"></video>{cap}</figure>'
+    return f'<figure class="vid"><video id="e2e" data-f="{VIDEO}" controls preload="metadata" src="data:video/mp4;base64,{b64(VIDEO)}"></video>{cap}</figure>'
 
 
 def judge_md(text, ctx):
@@ -86,9 +96,9 @@ def render_md(path, docid):
             cur = el.get_text(); el['id'] = docid + '-' + re.sub(r'\W+', '', cur.split()[0]) if cur.split() else ''
             m = re.match(r'(EV\d\d)', cur)
             if docid == 'd03' and m:
-                add = ''
+                add = clip(m.group(1))
                 if m.group(1) in EV_SCREENS: add += shots(EV_SCREENS[m.group(1)])
-                if m.group(1) in ('EV03', 'EV05', 'EV06', 'EV07', 'EV08', 'EV09'): add += video() if m.group(1) in ('EV03', 'EV08') else f'<p>夜間バッチの実行ログ：<a href="{EV_LOGS[m.group(1)]}">{EV_LOGS[m.group(1)]}</a>（操作動画の後半でも実行）</p>'
+                if m.group(1) in ('EV03', 'EV05', 'EV06', 'EV07', 'EV08', 'EV09'): add += '' if m.group(1) in ('EV03', 'EV08') else f'<p>夜間バッチの実行ログ：<a href="{EV_LOGS[m.group(1)]}">{EV_LOGS[m.group(1)]}</a>（操作動画の後半でも実行）</p>'
                 el.insert_after(BeautifulSoup(add, 'html.parser'))
             continue
         if el.name == 'pre':
@@ -174,14 +184,15 @@ summary = f'''<section id="summary"><h2>結果の要約</h2>
 <li>JCL：USJ010〜USJ040 を読み <a href="evidence/scripts/pipeline.py">pipeline.py</a> で組み立て（FTP→docker compose exec、SORT→Python、DD→環境変数 DD_xxx、SYSIN→標準入力）。実データ（受注757・入金650）で完走：<a href="evidence/batch/run_202412.log">run_202412.log</a></li>
 <li>帳票：請求書 202412／202402、月次売上表 202403 を既存サンプルと比較し一致（<a href="evidence/batch/compare_samples.txt">compare_samples.txt</a>）</li>
 <li>起動・コンパイルできなかったもの：USB300（NYKREC.cpy 欠落、復元で解消）のみ。z/OS 固有の動作（JCL の COND、FTP の文字コード変換）は確かめられないため「未検証」</li>
-<li>試験スクリプト：<a href="evidence/scripts/">evidence/scripts/</a>（rules_batch.py・rules_web.py・examples.py・crud.py・capture.py・video.py・build_*.py）</li></ul>
+<li>試験スクリプト：<a href="evidence/scripts/">evidence/scripts/</a>（rules_batch.py・rules_web.py・examples.py・crud.py・capture.py・video.py・video_clips.py・build_*.py）</li></ul>
 <p>判定の付け方：実行で確認＝実行結果（ログ・画面・出力ファイル）で記述どおりと確かめた／ソースで確認＝実行では観測できずソースで確かめた／推定＝静的版の推定のまま／未検証＝確かめられなかった（理由を記載）。</p></section>'''
 rules_html = '<section id="rules"><h2>業務ルール検証結果（入力→期待結果→実際の結果）</h2><table><tr><th>行</th><th>プログラム</th><th>ケース</th><th>入力</th><th>期待結果（設計書から）</th><th>実際の結果</th><th>結果</th><th>エビデンス</th></tr>' + ''.join(
     f'<tr><td>{x["row"]}</td><td>{esc(x["prog"])}</td><td>{esc(x["id"])}</td><td>{esc(x["input"])}</td><td>{esc(x["expected"])}</td><td>{esc(x["actual"])}{"<br><i>" + esc(x["note"]) + "</i>" if x["note"] else ""}</td><td>{x["result"]}</td><td><a href="{esc(x["evidence"])}">開く</a></td></tr>' for x in rules) + '</table></section>'
 fix_html = '<section id="fixes"><h2>修正箇所一覧</h2><table><tr><th>No</th><th>種類</th><th>設計書・箇所</th><th>修正前</th><th>修正後</th><th>理由</th><th>エビデンス</th></tr>' + ''.join(
     f'<tr><td>{f["id"]}</td><td>{f["kind"]}</td><td>{esc(f["doc"])}<br>{esc(f["where"])}</td><td>{esc(f["before"])}</td><td>{esc(f["after"])}</td><td>{esc(f["reason"])}</td><td><a href="{esc(f["evidence"])}">開く</a></td></tr>' for f in fx) + '</table></section>'
 iss_html = '<section id="issues"><h2>要確認の挙動（実行して見つかったバグ・業務上おかしい動き）</h2><table><tr><th>No</th><th>挙動</th><th>内容（実行結果）</th><th>確認事項</th><th>エビデンス</th></tr>' + ''.join(
-    f'<tr><td>{i}</td><td>{esc(t)}</td><td>{esc(d)}</td><td>{q}</td><td><a href="{esc(e)}">開く</a></td></tr>' for i, t, d, q, e in V['issues']) + '</table></section>'
+    f'<tr><td>{i}</td><td>{esc(t)}</td><td>{esc(d)}</td><td>{q}</td><td><a href="{esc(e)}">開く</a>{f'<br>▶ <a href="#v-{i}">再現動画</a>' if any(n.startswith(i + '_') for n in CLIPS) else ''}</td></tr>' for i, t, d, q, e in V['issues']) + '</table><h3>再現動画</h3><p>実際の画面操作と夜間バッチで、要確認の挙動を再現した動画です。</p><div class="clips">' + ''.join(
+    f'<div><b>{i} {esc(t)}</b>{clip(i, "再現動画")}</div>' for i, t, d, q, e in V['issues'] if any(n.startswith(i + '_') for n in CLIPS)) + '</div></section>'
 evl = []
 for root, ds, fs in os.walk(J(DYN, 'evidence')):
     ds.sort()
@@ -194,7 +205,7 @@ nav a{color:#dfe9f3;text-decoration:none}nav ul{padding-left:16px}nav li{margin:
 h2{border-left:6px solid #1f3b57;padding-left:8px;margin-top:40px}table{border-collapse:collapse;margin:8px 0;width:100%}th,td{border:1px solid #bbb;padding:3px 6px;vertical-align:top}
 th{background:#ddebf7}.b{display:inline-block;padding:1px 6px;border-radius:3px;font-size:12px;white-space:nowrap}.ex{background:#c6efce}.src{background:#ddebf7}.est{background:#ffeb9c}.nv{background:#f4cccc}
 .why{color:#555;font-size:12px}.ev{font-size:12px}tr.fixed td{background:#fff2cc}.fix{background:#fff2cc;border:1px solid #e0b000;padding:6px;margin:6px 0}
-.shots{display:flex;flex-wrap:wrap;gap:10px}.shots img{width:420px;border:1px solid #999}figure{margin:4px}figcaption{font-size:12px;color:#555}
+.clip video{width:640px}.clips{display:flex;flex-wrap:wrap;gap:16px}.shots{display:flex;flex-wrap:wrap;gap:10px}.shots img{width:420px;border:1px solid #999}figure{margin:4px}figcaption{font-size:12px;color:#555}
 video{width:900px;max-width:100%;border:1px solid #999}.static{font-size:12px;color:#666}details summary{cursor:pointer;font-weight:bold;margin:6px 0}.sum{width:auto}.evl{columns:2;font-size:12px}.shot{cursor:zoom-in}#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9;align-items:center;justify-content:center;cursor:zoom-out}#lb img{max-width:95%;max-height:95%;background:#fff}
 #evm{display:none;position:fixed;inset:3%;background:#fff;z-index:10;flex-direction:column;border:2px solid #1f3b57;box-shadow:0 0 0 3000px rgba(0,0,0,.5)}.evh{background:#1f3b57;color:#fff;padding:6px 12px;display:flex;gap:16px;align-items:center}.evh a{color:#fff}.evh button{margin-left:auto}#evb{overflow:auto;flex:1;padding:8px 12px}#evb pre{font-size:12px;white-space:pre;margin:0 0 12px}'''
 toc_html = '<nav><b>動的仕様書</b><ul><li><a href="#summary">結果の要約</a></li>' + ''.join(toc) + '<li><a href="#rules">業務ルール検証結果</a></li><li><a href="#fixes">修正箇所一覧</a></li><li><a href="#issues">要確認の挙動</a></li><li><a href="#evidence">エビデンス一覧</a></li></ul><p style="font-size:12px">Excel 版：<a href="設計書.xlsx">設計書.xlsx</a><br>静的版：<a href="../設計書.xlsx">spec/設計書.xlsx</a></p></nav>'
@@ -214,7 +225,7 @@ def pack(rel):
             ds[:] = [d for d in ds if d != '__pycache__']
             for f in fs:
                 pack(os.path.relpath(J(root, f), DYN))
-    elif os.path.isfile(p) and rel != VIDEO and not (rel.startswith('evidence/screens/') and os.path.basename(rel) in IMGS):
+    elif os.path.isfile(p) and rel not in VIDS and not (rel.startswith('evidence/screens/') and os.path.basename(rel) in IMGS):
         EXT[rel] = base64.b64encode(open(p, 'rb').read()).decode()
 
 

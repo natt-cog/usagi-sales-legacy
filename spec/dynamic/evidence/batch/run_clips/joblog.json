@@ -1,0 +1,74 @@
+[
+ {
+  "job": "(Web)",
+  "step": "JuchuExtract /work",
+  "rc": 0,
+  "out": "JuchuExtract TOKUI=30 SHOHIN=50 JUCHU=760"
+ },
+ {
+  "job": "USJ010",
+  "step": "STEP005 FTP get",
+  "rc": 0,
+  "out": "TOKUI/SHOHIN/JUCHU を受信"
+ },
+ {
+  "job": "USJ010",
+  "step": "STEP010 SORT",
+  "rc": 0,
+  "out": "760 件 FIELDS=(17,6,CH,A,9,8,CH,A,1,8,CH,A)"
+ },
+ {
+  "job": "USJ010",
+  "step": "STEP020 USB100",
+  "rc": 0,
+  "out": "USB100 IN=0000760 OUT=0000760 NOTK=0000000"
+ },
+ {
+  "job": "USJ020",
+  "step": "STEP010 USB200 SYSIN=20241231201401",
+  "rc": 0,
+  "out": "USB200 SIME 201401 - 202412\nUSB200 URIAGE=0000760 TAISYO=0000754 SEIKYU=0000694 TOBASI=0000006"
+ },
+ {
+  "job": "USJ030",
+  "step": "STEP010 SORT",
+  "rc": 0,
+  "out": "650 件 FIELDS=(15,6,CH,A,7,8,CH,A,1,6,CH,A)"
+ },
+ {
+  "job": "USJ030",
+  "step": "STEP020 USB300",
+  "rc": 0,
+  "out": "USB300 NYUKIN=0000650 KESIKOMI=0000946 KAJO=0000000 FUMEI=0000001"
+ },
+ {
+  "job": "USJ030",
+  "step": "STEP030 FTP put",
+  "rc": 0,
+  "out": "/work/SKKEKKA.DAT"
+ },
+ {
+  "job": "(Web)",
+  "step": "SeikyuImport",
+  "rc": 0,
+  "out": "SeikyuImport SEIKYU=694"
+ },
+ {
+  "job": "USJ040",
+  "step": "STEP010 USB400",
+  "rc": 0,
+  "out": "USB400 IN=0000760 OUT=0000698"
+ },
+ {
+  "job": "USJ040",
+  "step": "STEP020 USR500 SYSIN=202412",
+  "rc": 0,
+  "out": "USR500 YM=202412 MAISU=00007"
+ },
+ {
+  "job": "USJ040",
+  "step": "STEP030 USR510 SYSIN=202412",
+  "rc": 0,
+  "out": "USR510 YM=202412 KENSU=0000008"
+ }
+]

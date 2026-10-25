@@ -1,0 +1,67 @@
+{
+ "EV01_ログイン": {
+  "file": "evidence/video/EV01_ログイン.mp4",
+  "title": "ログイン失敗→ログイン成功→メニュー",
+  "sec": 9.0
+ },
+ "EV02_得意先照会・メンテナンス": {
+  "file": "evidence/video/EV02_得意先照会・メンテナンス.mp4",
+  "title": "得意先照会→得意先メンテナンス（直接 URL）",
+  "sec": 11.4
+ },
+ "EV03_受注入力": {
+  "file": "evidence/video/EV03_受注入力.mp4",
+  "title": "受注入力（エラー→確認→登録）",
+  "sec": 14.2
+ },
+ "EV04_受注照会": {
+  "file": "evidence/video/EV04_受注照会.mp4",
+  "title": "受注照会（受注番号・得意先と日付範囲）",
+  "sec": 16.2
+ },
+ "I01_無償サンプルが請求される": {
+  "file": "evidence/video/I01_無償サンプルが請求される.mp4",
+  "title": "無償サンプル（金額0）を登録→夜間バッチ→売上・請求に金額が付く",
+  "sec": 38.9
+ },
+ "EV05_売上計上": {
+  "file": "evidence/video/EV05_売上計上.mp4",
+  "title": "売上計上（USJ010）の JCL・実行ログ・売上ファイル",
+  "sec": 12.2
+ },
+ "EV06_月次請求締め": {
+  "file": "evidence/video/EV06_月次請求締め.mp4",
+  "title": "月次請求締め（USJ020）の JCL・実行ログ・請求ファイル",
+  "sec": 12.2
+ },
+ "EV07_入金消込・請求結果連携": {
+  "file": "evidence/video/EV07_入金消込・請求結果連携.mp4",
+  "title": "入金消込（USJ030）と SeikyuImport の実行ログ・消込ファイル",
+  "sec": 12.2
+ },
+ "EV08_請求照会": {
+  "file": "evidence/video/EV08_請求照会.mp4",
+  "title": "請求照会（検索・入力エラー）",
+  "sec": 12.2
+ },
+ "EV09_月次集計・帳票出力": {
+  "file": "evidence/video/EV09_月次集計・帳票出力.mp4",
+  "title": "月次集計・帳票（USJ040）の実行ログ・請求書・月次売上表",
+  "sec": 16.8
+ },
+ "I10_存在しない受注日を受け付ける": {
+  "file": "evidence/video/I10_存在しない受注日を受け付ける.mp4",
+  "title": "受注日 20241399 を入力→登録→受注照会",
+  "sec": 15.1
+ },
+ "I13_hidden書き換えでその金額で登録": {
+  "file": "evidence/video/I13_hidden書き換えでその金額で登録.mp4",
+  "title": "確認画面の hidden（tanka・uriageKin）を書き換え→登録→受注照会",
+  "sec": 18.6
+ },
+ "I11_得意先メンテで範囲外の値を登録できる": {
+  "file": "evidence/video/I11_得意先メンテで範囲外の値を登録できる.mp4",
+  "title": "締日31・端数7を入力→更新→再表示",
+  "sec": 13.5
+ }
+}
