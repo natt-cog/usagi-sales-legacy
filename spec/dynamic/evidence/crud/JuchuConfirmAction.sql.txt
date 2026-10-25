@@ -1,0 +1,2 @@
+SELECT tk_nm, del_flg FROM m_tokui WHERE tk_cd = $1
+SELECT sh_nm, tanka, zei_kbn FROM m_shohin WHERE sh_cd = $1

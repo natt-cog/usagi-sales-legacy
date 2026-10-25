@@ -1,0 +1,1 @@
+SELECT * FROM t_seikyu WHERE 1 = 1 AND tk_cd = '100001' ORDER BY seikyu_ym DESC, seikyu_no LIMIT 100

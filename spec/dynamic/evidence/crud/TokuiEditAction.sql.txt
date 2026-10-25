@@ -1,0 +1,3 @@
+SELECT * FROM m_tokui WHERE tk_cd = $1
+UPDATE m_tokui SET tk_nm = $1, tel = $2, sime_kbn = $3, hasu_kbn = $4, gendo = $5, a4 = $6, upd_ymd = $7 WHERE tk_cd = $8
+SELECT * FROM m_tokui WHERE tk_cd = $1

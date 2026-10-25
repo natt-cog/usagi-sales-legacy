@@ -1,0 +1,1 @@
+SELECT user_nm, kengen FROM m_user WHERE user_id = $1 AND password = $2

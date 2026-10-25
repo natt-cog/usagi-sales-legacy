@@ -1,0 +1,3 @@
+SELECT * FROM t_juchu WHERE 1 = 1 AND tk_cd = 'Z00009' ORDER BY juchu_no DESC LIMIT 100
+SELECT tk_nm FROM m_tokui WHERE tk_cd = $1
+SELECT sh_nm FROM m_shohin WHERE sh_cd = $1

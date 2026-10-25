@@ -1,0 +1,578 @@
+[
+ {
+  "row": 3,
+  "actual": "ログイン後のヘッダ: 営業事務１ さん",
+  "ok": true,
+  "evidence": "evidence/screens/02_menu.png",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 6,
+  "actual": "ログイン後のヘッダ: 営業事務１ さん",
+  "ok": true,
+  "evidence": "evidence/screens/02_menu.png",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 12,
+  "actual": "ログイン後のヘッダ: 営業事務１ さん",
+  "ok": true,
+  "evidence": "evidence/screens/02_menu.png",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 20,
+  "actual": "logout.do 後はログイン画面",
+  "ok": true,
+  "evidence": "evidence/rules/WEB-LOGOUT/http.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 22,
+  "actual": "logout.do 後はログイン画面",
+  "ok": true,
+  "evidence": "evidence/rules/WEB-LOGOUT/http.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 26,
+  "actual": "メニューのリンク: ['メニュー', 'ログアウト', '得意先照会', '受注入力', '受注照会', '請求照会']（ヘッダの2つを除き4リンク）",
+  "ok": true,
+  "evidence": "evidence/screens/02_menu.png",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 28,
+  "actual": "メニューのリンク: ['メニュー', 'ログアウト', '得意先照会', '受注入力', '受注照会', '請求照会']（ヘッダの2つを除き4リンク）",
+  "ok": true,
+  "evidence": "evidence/screens/02_menu.png",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 32,
+  "actual": "100010 居酒屋たぬき亭 040-000-1999 末日 切捨て 翌月末日 1,500,000 S013 ",
+  "ok": true,
+  "evidence": "evidence/examples/http.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 36,
+  "actual": "100010 居酒屋たぬき亭 040-000-1999 末日 切捨て 翌月末日 1,500,000 S013 ",
+  "ok": true,
+  "evidence": "evidence/examples/http.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 52,
+  "actual": "100010 居酒屋たぬき亭 040-000-1999 末日 切捨て 翌月末日 1,500,000 S013 ",
+  "ok": true,
+  "evidence": "evidence/examples/http.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 69,
+  "actual": "同じ処理を検証用得意先 Z00001 で実行（初期データは書き換えない）。「更新しました」と DB 更新を確認",
+  "ok": true,
+  "evidence": "evidence/rules/WEB-TOKUIEDIT/http.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 78,
+  "actual": "同じ処理を検証用得意先 Z00001 で実行（初期データは書き換えない）。「更新しました」と DB 更新を確認",
+  "ok": true,
+  "evidence": "evidence/rules/WEB-TOKUIEDIT/http.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 94,
+  "actual": "同じ処理を検証用得意先 Z00001 で実行（初期データは書き換えない）。「更新しました」と DB 更新を確認",
+  "ok": true,
+  "evidence": "evidence/rules/WEB-TOKUIEDIT/http.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 110,
+  "actual": "同じ処理を検証用得意先 Z00001 で実行（初期データは書き換えない）。「更新しました」と DB 更新を確認",
+  "ok": true,
+  "evidence": "evidence/rules/WEB-TOKUIEDIT/http.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 116,
+  "actual": "商品 50 件、先頭「200001 コシヒカリ5kg（2400円）」、受注日=20261025、区分=1",
+  "ok": true,
+  "evidence": "evidence/screens/05_juchu_input.png",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 119,
+  "actual": "商品 50 件、先頭「200001 コシヒカリ5kg（2400円）」、受注日=20261025、区分=1",
+  "ok": true,
+  "evidence": "evidence/screens/05_juchu_input.png",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 128,
+  "actual": "商品 50 件、先頭「200001 コシヒカリ5kg（2400円）」、受注日=20261025、区分=1",
+  "ok": true,
+  "evidence": "evidence/screens/05_juchu_input.png",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 136,
+  "actual": "tanka=2470, nebikiRitu=5.0, uriageKin=296400",
+  "ok": true,
+  "evidence": "evidence/examples/http.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 143,
+  "actual": "tanka=2470, nebikiRitu=5.0, uriageKin=296400",
+  "ok": true,
+  "evidence": "evidence/examples/http.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 159,
+  "actual": "tanka=2470, nebikiRitu=5.0, uriageKin=296400",
+  "ok": true,
+  "evidence": "evidence/examples/http.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 168,
+  "actual": "tanka=2470, nebikiRitu=5.0, uriageKin=296400",
+  "ok": true,
+  "evidence": "evidence/examples/http.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 185,
+  "actual": "同じ処理を実行: MAX+1 採番、flg1=0・ins_ymd=当日・ins_user=ログインユーザで INSERT",
+  "ok": true,
+  "evidence": "evidence/rules/WEB-REG-MAX/http.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 195,
+  "actual": "同じ処理を実行: MAX+1 採番、flg1=0・ins_ymd=当日・ins_user=ログインユーザで INSERT",
+  "ok": true,
+  "evidence": "evidence/rules/WEB-REG-MAX/http.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 210,
+  "actual": "同じ処理を実行: MAX+1 採番、flg1=0・ins_ymd=当日・ins_user=ログインユーザで INSERT",
+  "ok": true,
+  "evidence": "evidence/rules/WEB-REG-MAX/http.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 225,
+  "actual": "同じ処理を実行: MAX+1 採番、flg1=0・ins_ymd=当日・ins_user=ログインユーザで INSERT",
+  "ok": true,
+  "evidence": "evidence/rules/WEB-REG-MAX/http.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 233,
+  "actual": "1 件 合計金額 0 円 ／ 10000751 2024/11/25 100012 ベーカリーこむぎ 200025 料理酒1.8L 1 480 無償 0 試供品",
+  "ok": true,
+  "evidence": "evidence/screens/08_juchu_inquiry_result.png",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 238,
+  "actual": "1 件 合計金額 0 円 ／ 10000751 2024/11/25 100012 ベーカリーこむぎ 200025 料理酒1.8L 1 480 無償 0 試供品",
+  "ok": true,
+  "evidence": "evidence/screens/08_juchu_inquiry_result.png",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 253,
+  "actual": "1 件 合計金額 0 円 ／ 10000751 2024/11/25 100012 ベーカリーこむぎ 200025 料理酒1.8L 1 480 無償 0 試供品",
+  "ok": true,
+  "evidence": "evidence/screens/08_juchu_inquiry_result.png",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 260,
+  "actual": "202412100012 202412 2024/11/21～2024/12/20 1 480 48 48 0 0 528 0 未",
+  "ok": true,
+  "evidence": "evidence/examples/http.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 265,
+  "actual": "夜間バッチ取込後の t_seikyu: 202412100012|528|0|0",
+  "ok": true,
+  "evidence": "evidence/examples/http.txt",
+  "fix": "202412100012 請求528円 入金0 消込区分0（夜間バッチ実行後の t_seikyu。実行で確認）",
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 284,
+  "actual": "1 件 未入金合計 528 円 ／ 202412100012 202412 2024/11/21～2024/12/20 1 480 48 48 0 0 528 0 未",
+  "ok": true,
+  "evidence": "evidence/examples/http.txt",
+  "fix": "1件 202412100012 528円、入金0円・消込「未」、未入金合計 528円（実行で確認）",
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 292,
+  "actual": "JuchuExtract の出力に該当レコードあり",
+  "ok": true,
+  "evidence": "evidence/batch/run_202412/USAGI.PROD.TOKUI",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 308,
+  "actual": "JuchuExtract の出力に該当レコードあり",
+  "ok": true,
+  "evidence": "evidence/batch/run_202412/USAGI.PROD.TOKUI",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 317,
+  "actual": "JuchuExtract の出力に該当レコードあり",
+  "ok": true,
+  "evidence": "evidence/batch/run_202412/USAGI.PROD.TOKUI",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 332,
+  "actual": "引数なし＝/work に出力（実行時は /work を指定）",
+  "ok": true,
+  "evidence": "evidence/batch/run_202412.log",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 334,
+  "actual": "'100012ベーカリーこむぎ                2021100'（100バイト）",
+  "ok": true,
+  "evidence": "evidence/batch/run_202412/USAGI.PROD.TOKUI",
+  "fix": "100012ベーカリーこむぎ                2021100␣…（100バイト。実行で確認）",
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 343,
+  "actual": "'200025料理酒1.8L                           00000480'",
+  "ok": true,
+  "evidence": "evidence/batch/run_202412/USAGI.PROD.SHOHIN",
+  "fix": "200025料理酒1.8L                           00000480␣…（80バイト。実行で確認）",
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 349,
+  "actual": "'1000075120241125100012200025000000100004803+00000000000'",
+  "ok": true,
+  "evidence": "evidence/batch/run_202412/USAGI.PROD.JUCHU",
+  "fix": "1000075120241125100012200025000000100004803+00000000000␣×25（80バイト。実行で確認）",
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 359,
+  "actual": "JuchuExtract 後 flg1=0 の件数 0",
+  "ok": true,
+  "evidence": "evidence/rules/JX/run.log",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 381,
+  "actual": "202412100012 100012 202412 20241121 20241220 件数1 売上480 税48 請求528 入金0 消込0",
+  "ok": true,
+  "evidence": "evidence/batch/run_202412/USAGI.PROD.SKKEKKA",
+  "fix": "202412100012 100012 202412 20241121 20241220 00001 +00000000480 +00000000048 +00000000528 入金+00000000000 消込区分0 …（実行で確認）",
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 400,
+  "actual": "引数 [ファイル, 取込日]。省略時は /work/SKKEKKA.DAT・当日",
+  "ok": null,
+  "evidence": "",
+  "fix": null,
+  "verdict": "ソースで確認"
+ },
+ {
+  "row": 403,
+  "actual": "202412100012|100012|202412|20241121|20241220|1|480|48|528|0|0|20261025",
+  "ok": true,
+  "evidence": "evidence/batch/run_e2e.log",
+  "fix": "202412100012, 100012, 202412, 20241121, 20241220, 1, 480, 48, 528, 0, 0, 20261025（取込日＝実行日。実行で確認）",
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 428,
+  "actual": "USB100 の入力（ソート済み受注・得意先・商品）に該当レコードあり",
+  "ok": true,
+  "evidence": "evidence/batch/run_202412/USAGI.PROD.JUCHU",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 438,
+  "actual": "USB100 の入力（ソート済み受注・得意先・商品）に該当レコードあり",
+  "ok": true,
+  "evidence": "evidence/batch/run_202412/USAGI.PROD.JUCHU",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 447,
+  "actual": "USB100 の入力（ソート済み受注・得意先・商品）に該当レコードあり",
+  "ok": true,
+  "evidence": "evidence/batch/run_202412/USAGI.PROD.JUCHU",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 453,
+  "actual": "100012 20241125 10000751 200025 区分3 数量1 単価480 金額480 税区分1 税率10 税額48",
+  "ok": true,
+  "evidence": "evidence/batch/run_202412/USAGI.PROD.URIAGE",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 466,
+  "actual": "USB100 IN=0000757 OUT=0000757 NOTK=0000000",
+  "ok": true,
+  "evidence": "evidence/batch/run_202412.log",
+  "fix": "USB100 IN=0000757 OUT=0000757 NOTK=0000000（202412 データでの実行結果）",
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 477,
+  "actual": "10000754: 金額5520 税区分2 税率08 税額441",
+  "ok": true,
+  "evidence": "evidence/batch/run_202412/USAGI.PROD.URIAGE",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 482,
+  "actual": "10000754: 金額5520 税区分2 税率08 税額441",
+  "ok": true,
+  "evidence": "evidence/batch/run_202412/USAGI.PROD.URIAGE",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 497,
+  "actual": "USJ020 SYSIN=20241231201401 で実行。100010 の売上 10000754・10000757",
+  "ok": true,
+  "evidence": "evidence/batch/run_202412.log",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 500,
+  "actual": "USJ020 SYSIN=20241231201401 で実行。100010 の売上 10000754・10000757",
+  "ok": true,
+  "evidence": "evidence/batch/run_202412.log",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 509,
+  "actual": "USJ020 SYSIN=20241231201401 で実行。100010 の売上 10000754・10000757",
+  "ok": true,
+  "evidence": "evidence/batch/run_202412.log",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 522,
+  "actual": "202412100010 20241201〜20241231 件数2 売上19440 税1833 請求21273 10%:13920/1392 軽減:5520/441",
+  "ok": true,
+  "evidence": "evidence/batch/run_202412/USAGI.PROD.SEIKYU",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 554,
+  "actual": "202412100012 の期間 20241121〜20241220",
+  "ok": true,
+  "evidence": "evidence/rules/USB210",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 557,
+  "actual": "202412100012 の期間 20241121〜20241220",
+  "ok": true,
+  "evidence": "evidence/rules/USB210",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 569,
+  "actual": "NYUKIN.DAT 1行目 '00000120140930100001000003188100440振込手数料差引' を復元 NYKREC で読んで消込できた",
+  "ok": true,
+  "evidence": "evidence/batch/run_202412/USAGI.PROD.NYUKIN",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 577,
+  "actual": "入金000001 の充当先は 201408100001（20140801〜20140831 請求3628）。201409100001 は 20140901〜20140930 売上4200 税336 請求4536（入金000002 で消込）",
+  "ok": false,
+  "evidence": "evidence/batch/run_202412/USAGI.PROD.KESIKOMI",
+  "fix": "201408100001 100001 201408 20140801〜20140831 請求3628（入金000001 の充当先。201409100001 は 20140901〜20140930 請求4536 で入金000002 が充当される。実行で確認）",
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 596,
+  "actual": "SKKEKKA は SEIKYU と同じレイアウト＋入金額・消込区分",
+  "ok": true,
+  "evidence": "evidence/batch/run_202412/USAGI.PROD.SKKEKKA",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 615,
+  "actual": "'00000120140930100001201408100001000003628100000318800440\\x00\\x00\\x00\\x00' → 入金000001 請求201408100001 消込額3628 区分1 入金3188 手数料440",
+  "ok": true,
+  "evidence": "evidence/batch/run_202412/USAGI.PROD.KESIKOMI",
+  "fix": "000001 20140930 100001 201408100001 消込額3,628 区分1 入金3,188 手数料440（実行で確認）",
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 637,
+  "actual": "100009 202403 1 580 58 638",
+  "ok": true,
+  "evidence": "evidence/batch/run_202403/USAGI.PROD.TKSUM",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 650,
+  "actual": "100009 202403 1 580 58 638",
+  "ok": true,
+  "evidence": "evidence/batch/run_202403/USAGI.PROD.TKSUM",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 663,
+  "actual": "請求書_202412.txt と内容一致（改ページ位置のみ正規化）",
+  "ok": true,
+  "evidence": "evidence/batch/compare_samples.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 665,
+  "actual": "請求書_202412.txt と内容一致（改ページ位置のみ正規化）",
+  "ok": true,
+  "evidence": "evidence/batch/compare_samples.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 684,
+  "actual": "請求書_202412.txt と内容一致（改ページ位置のみ正規化）",
+  "ok": true,
+  "evidence": "evidence/batch/compare_samples.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 697,
+  "actual": "請求書_202412.txt と内容一致（改ページ位置のみ正規化）",
+  "ok": true,
+  "evidence": "evidence/batch/compare_samples.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 706,
+  "actual": "請求書_202412.txt と内容一致（改ページ位置のみ正規化）",
+  "ok": true,
+  "evidence": "evidence/batch/compare_samples.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 720,
+  "actual": "月次売上表_202403.txt と内容一致",
+  "ok": true,
+  "evidence": "evidence/batch/compare_samples.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 722,
+  "actual": "月次売上表_202403.txt と内容一致",
+  "ok": true,
+  "evidence": "evidence/batch/compare_samples.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 730,
+  "actual": "月次売上表_202403.txt と内容一致",
+  "ok": true,
+  "evidence": "evidence/batch/compare_samples.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 739,
+  "actual": "月次売上表_202403.txt と内容一致",
+  "ok": true,
+  "evidence": "evidence/batch/compare_samples.txt",
+  "fix": null,
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 747,
+  "actual": "USB900 を 202412 の URIAGE（757件）で実行: IN=757 UPD=0、URINEW は入力とバイト一致",
+  "ok": true,
+  "evidence": "evidence/rules/USB900",
+  "fix": "（2014年以降のデータのみのため対象なし。実データ757件で実行し UPD=0 を確認）",
+  "verdict": "実行で確認"
+ },
+ {
+  "row": 760,
+  "actual": "USB900 を 202412 の URIAGE（757件）で実行: IN=757 UPD=0、URINEW は入力とバイト一致",
+  "ok": true,
+  "evidence": "evidence/rules/USB900",
+  "fix": "（2014年以降のデータのみのため対象なし。実データ757件で実行し UPD=0 を確認）",
+  "verdict": "実行で確認"
+ }
+]

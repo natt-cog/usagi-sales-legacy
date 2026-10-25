@@ -1,0 +1,16 @@
+{'tk': 'A00000', 'date': '20231231', 'juno': '00000001', 'sh': 'S00001', 'kbn': '1', 'suryo': 1, 'tanka': 100, 'kin': 100, 'zeikbn': '1', 'ritu': '10', 'zei': 10}
+{'tk': 'A00001', 'date': '20231231', 'juno': '00000001', 'sh': 'S00001', 'kbn': '1', 'suryo': 1, 'tanka': 100, 'kin': 100, 'zeikbn': '1', 'ritu': '10', 'zei': 10}
+{'tk': 'A00001', 'date': '20240110', 'juno': '00000051', 'sh': 'S00003', 'kbn': '1', 'suryo': 1, 'tanka': 105, 'kin': 105, 'zeikbn': '1', 'ritu': '10', 'zei': 10}
+{'tk': 'A00001', 'date': '20240111', 'juno': '00000052', 'sh': 'S00003', 'kbn': '1', 'suryo': 1, 'tanka': 105, 'kin': 105, 'zeikbn': '1', 'ritu': '10', 'zei': 10}
+{'tk': 'A00001', 'date': '20240131', 'juno': '00000002', 'sh': 'S00001', 'kbn': '1', 'suryo': 1, 'tanka': 100, 'kin': 100, 'zeikbn': '1', 'ritu': '10', 'zei': 10}
+{'tk': 'A00001', 'date': '20240201', 'juno': '00000003', 'sh': 'S00001', 'kbn': '1', 'suryo': 1, 'tanka': 100, 'kin': 100, 'zeikbn': '1', 'ritu': '10', 'zei': 10}
+{'tk': 'A00001', 'date': '20240228', 'juno': '00000004', 'sh': 'S00001', 'kbn': '1', 'suryo': 1, 'tanka': 100, 'kin': 100, 'zeikbn': '1', 'ritu': '10', 'zei': 10}
+{'tk': 'A00001', 'date': '20240229', 'juno': '00000005', 'sh': 'S00001', 'kbn': '1', 'suryo': 1, 'tanka': 100, 'kin': 100, 'zeikbn': '1', 'ritu': '10', 'zei': 10}
+{'tk': 'A00001', 'date': '20240301', 'juno': '00000006', 'sh': 'S00001', 'kbn': '1', 'suryo': 1, 'tanka': 100, 'kin': 100, 'zeikbn': '1', 'ritu': '10', 'zei': 10}
+{'tk': 'A00001', 'date': '20240415', 'juno': '00000007', 'sh': 'S00001', 'kbn': '1', 'suryo': 1, 'tanka': 100, 'kin': 100, 'zeikbn': '1', 'ritu': '10', 'zei': 10}
+{'tk': 'A00002', 'date': '20240120', 'juno': '00000008', 'sh': 'S00001', 'kbn': '1', 'suryo': 1, 'tanka': 100, 'kin': 100, 'zeikbn': '1', 'ritu': '10', 'zei': 10}
+{'tk': 'A00002', 'date': '20240121', 'juno': '00000009', 'sh': 'S00001', 'kbn': '1', 'suryo': 1, 'tanka': 100, 'kin': 100, 'zeikbn': '1', 'ritu': '10', 'zei': 10}
+{'tk': 'A00002', 'date': '20240320', 'juno': '00000010', 'sh': 'S00001', 'kbn': '1', 'suryo': 1, 'tanka': 100, 'kin': 100, 'zeikbn': '1', 'ritu': '10', 'zei': 10}
+{'tk': 'A00002', 'date': '20240321', 'juno': '00000011', 'sh': 'S00001', 'kbn': '1', 'suryo': 1, 'tanka': 100, 'kin': 100, 'zeikbn': '1', 'ritu': '10', 'zei': 10}
+{'tk': 'A00003', 'date': '20240115', 'juno': '00000012', 'sh': 'S00001', 'kbn': '1', 'suryo': 1, 'tanka': 100, 'kin': 100, 'zeikbn': '1', 'ritu': '10', 'zei': 10}
+{'tk': 'A00005', 'date': '20240229', 'juno': '00000013', 'sh': 'S00001', 'kbn': '1', 'suryo': 1, 'tanka': 100, 'kin': 100, 'zeikbn': '1', 'ritu': '10', 'zei': 10}

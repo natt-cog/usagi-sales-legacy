@@ -1,0 +1,12 @@
+GET http://localhost:8080/usagi/tokuiEdit.do?tkCd=Z00001&mode=update&tkNm=%E6%A4%9C%E8%A8%BC%E7%94%A8%E5%BE%97%E6%84%8F%E5%85%88%EF%BC%88%E6%9B%B4%E6%96%B0%EF%BC%89&tel=111&simeKbn=31&hasuKbn=7&gendo=200&tanto=S998
+HTTP 200
+画面テキスト: 得意先メンテナンス 株式会社うさぎ商事 販売管理システム 営業事務１ さん メニュー ログアウト 得意先メンテナンス 更新しました 得意先コード 得意先名 電話番号 締日区分 （15/20/99） 端数区分 与信限度額 担当
+------------------------------------------------------------
+GET http://localhost:8080/usagi/tokuiEdit.do?tkCd=999999
+HTTP 200
+画面テキスト: 得意先メンテナンス 株式会社うさぎ商事 販売管理システム 営業事務１ さん メニュー ログアウト 得意先メンテナンス 得意先コード
+------------------------------------------------------------
+GET http://localhost:8080/usagi/tokuiEdit.do?tkCd=Z00001&mode=update&tkNm=x&tel=1&simeKbn=99&hasuKbn=1&gendo=abc&tanto=S
+HTTP 500
+画面テキスト: HTTP Status 500 – Internal Server Error HTTP Status 500 – Internal Server Error Type Exception Report Message java.lang.NumberFormatException: For input string: "abc" Description The server encountered an unexpected condition that prevented it from fulfilling the request. Exception javax.servlet.ServletException: java.lang.NumberFormatException: For input string: "abc" org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:286) org.apache.struts.action.ActionServlet.process(ActionServlet.java:1913) org.apache.struts.action.ActionServlet.doGet(ActionServlet.java:449) javax.servlet.http.HttpServlet.service(HttpServlet.java:489) javax.servlet.http.HttpServlet.service(HttpServlet.java:583) org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) jp.co.usagi.sales.common.EncodingFilter.doFilter(EncodingFilter.java:23) Root Cause java.lang.NumberFormatException: For input string: "abc" java.lang.NumberFormatException.forInputString(NumberFormatException.java:65) java.lang.Long.parseLong(Long.java:589) java.lang.Long.parseLong(Long.java:631) jp.co.usagi.sales.action.TokuiEditAction.execute(TokuiEditAction.java:37) org.apache.struts.chain.commands.servlet.ExecuteAction.execute(ExecuteAction.java:58) org.apache.struts.chain.commands.AbstractExecuteAction.execute(AbstractExecuteAction.java:67) org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:51) org.apache.commons.chain.impl.ChainBase.execute(ChainBase.j
+------------------------------------------------------------
