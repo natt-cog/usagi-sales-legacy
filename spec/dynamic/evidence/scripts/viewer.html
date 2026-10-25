@@ -1,0 +1,31 @@
+<div id="evm"><div class="evh"><b id="evt"></b><a id="evd" download>ダウンロード</a><button onclick="document.getElementById('evm').style.display='none'">閉じる ✕</button></div><div id="evb"></div></div>
+<script>
+let EV=null;
+async function evfs(){if(!EV){const b=Uint8Array.from(atob(document.getElementById('evz').textContent.trim()),c=>c.charCodeAt(0));EV=JSON.parse(await new Response(new Blob([b]).stream().pipeThrough(new DecompressionStream('gzip'))).text());}return EV;}
+const bytes=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+const escH=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function hex(b){let o='';for(let i=0;i<Math.min(b.length,4096);i+=16){const r=b.slice(i,i+16);o+=i.toString(16).padStart(6,'0')+'  '+[...r].map(x=>x.toString(16).padStart(2,'0')).join(' ')+'\n';}return o;}
+async function openEv(p){
+  const fs=await evfs(),m=document.getElementById('evm'),t=document.getElementById('evt'),body=document.getElementById('evb'),d=document.getElementById('evd');
+  p=p.replace(/\/$/,'');t.textContent=p;
+  if(d.href.startsWith('blob:'))URL.revokeObjectURL(d.href);
+  if(fs[p]!==undefined){
+    const b=bytes(fs[p]);d.style.display='';d.download=p.split('/').pop();
+    if(/\.xlsx$/.test(p)){d.href=URL.createObjectURL(new Blob([b],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}));body.innerHTML='<p>Excel ファイルです。「ダウンロード」で保存して開いてください。</p>';}
+    else if(/\.png$/.test(p)){d.href=URL.createObjectURL(new Blob([b],{type:'image/png'}));body.innerHTML='<img style="max-width:100%" src="'+d.href+'">';}
+    else{d.href=URL.createObjectURL(new Blob([b]));let s,bad=false;
+      try{s=new TextDecoder('utf-8',{fatal:true}).decode(b);}catch(e){bad=true;s=new TextDecoder().decode(b);}
+      if(/\.json$/.test(p)){try{s=JSON.stringify(JSON.parse(s),null,2);}catch(e){}}
+      body.innerHTML=(bad?'<p class="why">UTF-8 以外のバイト（COMP-3 などのパック10進）を含むため、文字にできない部分は「�」で表示しています。下に先頭 4KB の16進表示を付けています。</p>':'')+'<pre>'+escH(s)+'</pre>'+(bad?'<pre>'+hex(b)+'</pre>':'');}
+  }else{
+    const ks=Object.keys(fs).filter(k=>k.startsWith(p+'/')).sort();d.style.display='none';
+    body.innerHTML=ks.length?'<p>フォルダ（'+ks.length+' ファイル）</p><ul>'+ks.map(k=>'<li><a href="'+escH(k)+'">'+escH(k.slice(p.length+1))+'</a></li>').join('')+'</ul>':'<p>このファイルは HTML に入っていません。</p>';
+  }
+  m.style.display='flex';body.scrollTop=0;
+}
+document.addEventListener('click',e=>{const a=e.target.closest('a[href]');if(!a)return;const h=a.getAttribute('href').split('#')[0];if(!h)return;
+  if(/^evidence\/screens\/.+\.png$/.test(h)){const k=h.split('/').pop();if(IMG[k]){e.preventDefault();const l=document.getElementById('lb');l.querySelector('img').src=IMG[k];l.style.display='flex';return;}}
+  if(/^evidence\/video\/.+\.mp4$/.test(h)){e.preventDefault();document.getElementById('e2e').scrollIntoView({block:'center'});return;}
+  if(/^(evidence\/|\.\.\/|設計書)/.test(h)){e.preventDefault();openEv(h);}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('evm').style.display='none';});
+</script>

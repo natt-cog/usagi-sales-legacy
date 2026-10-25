@@ -76,6 +76,10 @@ def render_md(path, docid):
     sp = BeautifulSoup(h, 'html.parser')
     for code in sp.select('pre > code.language-mermaid'):
         pre = code.parent; pre['class'] = 'mermaid'; pre.string = code.get_text()
+    for a in sp.find_all('a', href=True):
+        m = re.match(r'(\d\d)_[^#/]*\.md(?:#(.+))?$', a['href'])
+        if m:
+            a['href'] = f'#d{m.group(1)}' + (f'-{m.group(2).upper()}' if m.group(2) else '')
     cur = ''
     for el in sp.find_all(['h2', 'h3', 'table', 'li', 'pre']):
         if el.name == 'h2':
@@ -191,11 +195,34 @@ h2{border-left:6px solid #1f3b57;padding-left:8px;margin-top:40px}table{border-c
 th{background:#ddebf7}.b{display:inline-block;padding:1px 6px;border-radius:3px;font-size:12px;white-space:nowrap}.ex{background:#c6efce}.src{background:#ddebf7}.est{background:#ffeb9c}.nv{background:#f4cccc}
 .why{color:#555;font-size:12px}.ev{font-size:12px}tr.fixed td{background:#fff2cc}.fix{background:#fff2cc;border:1px solid #e0b000;padding:6px;margin:6px 0}
 .shots{display:flex;flex-wrap:wrap;gap:10px}.shots img{width:420px;border:1px solid #999}figure{margin:4px}figcaption{font-size:12px;color:#555}
-video{width:900px;max-width:100%;border:1px solid #999}.static{font-size:12px;color:#666}details summary{cursor:pointer;font-weight:bold;margin:6px 0}.sum{width:auto}.evl{columns:2;font-size:12px}.shot{cursor:zoom-in}#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9;align-items:center;justify-content:center;cursor:zoom-out}#lb img{max-width:95%;max-height:95%;background:#fff}'''
+video{width:900px;max-width:100%;border:1px solid #999}.static{font-size:12px;color:#666}details summary{cursor:pointer;font-weight:bold;margin:6px 0}.sum{width:auto}.evl{columns:2;font-size:12px}.shot{cursor:zoom-in}#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9;align-items:center;justify-content:center;cursor:zoom-out}#lb img{max-width:95%;max-height:95%;background:#fff}
+#evm{display:none;position:fixed;inset:3%;background:#fff;z-index:10;flex-direction:column;border:2px solid #1f3b57;box-shadow:0 0 0 3000px rgba(0,0,0,.5)}.evh{background:#1f3b57;color:#fff;padding:6px 12px;display:flex;gap:16px;align-items:center}.evh a{color:#fff}.evh button{margin-left:auto}#evb{overflow:auto;flex:1;padding:8px 12px}#evb pre{font-size:12px;white-space:pre;margin:0 0 12px}'''
 toc_html = '<nav><b>動的仕様書</b><ul><li><a href="#summary">結果の要約</a></li>' + ''.join(toc) + '<li><a href="#rules">業務ルール検証結果</a></li><li><a href="#fixes">修正箇所一覧</a></li><li><a href="#issues">要確認の挙動</a></li><li><a href="#evidence">エビデンス一覧</a></li></ul><p style="font-size:12px">Excel 版：<a href="設計書.xlsx">設計書.xlsx</a><br>静的版：<a href="../設計書.xlsx">spec/設計書.xlsx</a></p></nav>'
 page = f'''<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><title>販売管理システム 動的仕様書</title><style>{CSS}</style>
 <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";mermaid.initialize({{startOnLoad:true}});</script></head>
 <body>{toc_html}<main><h1>販売管理システム（usagi-sales-legacy）動的仕様書</h1><p>静的仕様書（spec/md・spec/設計書.xlsx）の記述を、システムを実際に動かして確かめた結果。静的版は変更していない。</p>
 {summary}{"".join(body)}{rules_html}{fix_html}{iss_html}{ev_html}</main><div id="lb" onclick="this.style.display='none'"><img></div><script>const IMG={json.dumps(IMGS)};document.querySelectorAll('img.shot').forEach(i=>{{i.src=IMG[i.dataset.k];i.onclick=()=>{{const l=document.getElementById('lb');l.querySelector('img').src=i.src;l.style.display='flex';}};}});</script></body></html>'''
+# リンク先（エビデンス・Excel・静的版 md）を gzip して HTML に入れ、リポジトリなしでもその場で開けるようにする
+import gzip, base64
+EXT = {}
+
+
+def pack(rel):
+    p = os.path.normpath(J(DYN, rel))
+    if os.path.isdir(p):
+        for root, ds, fs in os.walk(p):
+            ds[:] = [d for d in ds if d != '__pycache__']
+            for f in fs:
+                pack(os.path.relpath(J(root, f), DYN))
+    elif os.path.isfile(p) and rel != VIDEO and not (rel.startswith('evidence/screens/') and os.path.basename(rel) in IMGS):
+        EXT[rel] = base64.b64encode(open(p, 'rb').read()).decode()
+
+
+for h in sorted(set(re.findall(r'href="((?:evidence/|\.\./|設計書)[^"#]*)', page))):
+    pack(html.unescape(h).rstrip('/'))
+evz = base64.b64encode(gzip.compress(json.dumps(EXT, ensure_ascii=False).encode(), 9)).decode()
+viewer = open(J(HERE, 'viewer.html')).read()
+page = page.replace('</body></html>', f'<script id="evz" type="application/octet-stream">{evz}</script>{viewer}</body></html>')
 open(J(DYN, 'index.html'), 'w').write(page)
+print('embedded', len(EXT), 'files', len(evz) // 1024, 'KB')
 print(cnt, tot, {k: f'{v / tot:.1%}' for k, v in cnt.items()}, 'md', mdcnt)
