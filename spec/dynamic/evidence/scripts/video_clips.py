@@ -21,7 +21,7 @@ def sql(q):
                           capture_output=True, text=True, check=True).stdout.strip()
 
 
-frames = []; lock = threading.Lock(); made = {}
+frames = []; lock = threading.Lock(); made = {}; T0 = [0.0]
 CAPCSS = ('position:fixed;left:0;right:0;bottom:0;z-index:99;background:rgba(20,40,70,.92);color:#fff;'
           'font:bold 15px sans-serif;padding:7px 12px')
 
@@ -77,12 +77,13 @@ def main():
 
         def start():
             with lock: frames.clear()
+            T0[0] = time.time()
             cdp.send('Page.startScreencast', {'format': 'jpeg', 'quality': 80, 'maxWidth': 1280, 'maxHeight': 720})
             w(.3)
 
         def stop(name, title):
             w(1.5)
-            with lock: fr = list(frames)
+            with lock: fr = [f for f in frames if f[0] >= T0[0] + .25] or list(frames)  # 直前の動画の最後の画面を除く
             cdp.send('Page.stopScreencast'); w(.3)
             t0, t1 = fr[0][0], time.time(); seq = []; j = 0
             for k in range(int((t1 - t0) * 10) + 1):
