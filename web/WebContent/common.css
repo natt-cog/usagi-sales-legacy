@@ -8,3 +8,18 @@ table.list th { background: #ccddee; border: 1px solid #888; padding: 2px 6px; }
 table.list td { border: 1px solid #888; padding: 2px 6px; }
 td.num { text-align: right; }
 .msg { color: #cc0000; font-weight: bold; }
+.head .theme-toggle { float: right; }
+
+body.dark { background: #1e1f22; color: #d8d8d8; }
+body.dark .head { background: #1b2f45; }
+body.dark .head a { color: #cfe3ff; }
+body.dark h2 { border-left-color: #5b8fc7; }
+body.dark a { color: #8ab4f8; }
+body.dark a:visited { color: #c58af9; }
+body.dark table.list { background: #2a2b2f; }
+body.dark table.list th { background: #33475e; color: #e8e8e8; border-color: #5a5a5a; }
+body.dark table.list td { border-color: #5a5a5a; }
+body.dark .msg { color: #ff7b72; }
+body.dark input, body.dark select, body.dark textarea { background: #2a2b2f; color: #e8e8e8; border: 1px solid #6a6a6a; }
+body.dark input[type="submit"], body.dark input[type="button"] { background: #3a3d42; }
+body.dark input[readonly] { background: #232427; color: #aaaaaa; }
