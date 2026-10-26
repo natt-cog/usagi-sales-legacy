@@ -11,6 +11,7 @@ td.num { text-align: right; }
 .head .theme-toggle { float: right; }
 
 body.dark { background: #1e1f22; color: #d8d8d8; }
+body.dark table { color: #d8d8d8; }
 body.dark .head { background: #1b2f45; }
 body.dark .head a { color: #cfe3ff; }
 body.dark h2 { border-left-color: #5b8fc7; }
